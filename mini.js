@@ -4,7 +4,7 @@ const chancespan=document.querySelector(".number_mod")
 const guess=document.querySelector(".msg_mod")
  const target = Math.floor(Math.random() * 100) + 1;
 let productArray=[];
-let attempts = 5;
+let attempts = 10;
 c.addEventListener("click",function()
 {
    
@@ -21,7 +21,8 @@ c.addEventListener("click",function()
     if(target==inputmsg)
     {
         chancespan.textContent= `🎉 You guessed it! Number was ${target}`
- 
+        alert(" 🎉 successfully guessed the Number")
+        inputBox.value = "";
     }
     else if(attempts==0)
     {
@@ -37,5 +38,11 @@ c.addEventListener("click",function()
     }
      guess.textContent= productArray.join(",")
       inputBox.value = "";
+
+      if(target!==inputmsg && attempt==10)
+      {
+        alert("lost the game")
+        inputBox.value = "";
+      }
 });
 
