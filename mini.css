@@ -117,14 +117,20 @@ body{
   ::-webkit-scrollbar {
     display: none;
    }
+   .top{
+    background-size: 200% 123%;
+   }
   .body-content {
         width: 88%;
         height: 36%;
     }
   .body-content h1 {
-        font-size: 28px;
+        font-size: 25px;
     }
     .button-get button {
     width: 33%;
+    }
+    .msg p {
+        font-size: 19px;
     }
 }
