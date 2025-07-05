@@ -2,9 +2,18 @@ const c= document.querySelector(".b1")
 const inputBox=document.querySelector(".input-txt")
 const chancespan=document.querySelector(".number_mod")
 const guess=document.querySelector(".msg_mod")
- const target = Math.floor(Math.random() * 100) + 1;
-let productArray=[];
-let attempts = 10;
+ let target = Math.floor(Math.random() * 100) + 1;
+  let productArray=[];
+  let attempts = 10;
+function reset()
+{
+  target = Math.floor(Math.random() * 100) + 1;
+   productArray=[];
+   attempts = 10;
+   chancespan.textContent = attempts;
+  guess.textContent = "none";
+}
+
 c.addEventListener("click",function()
 {
    
@@ -23,6 +32,8 @@ c.addEventListener("click",function()
         chancespan.textContent= `🎉 You guessed it! Number was ${target}`
         alert(" 🎉 successfully guessed the Number")
         inputBox.value = "";
+        reset();
+
     }
     else if(attempts==0)
     {
@@ -36,13 +47,15 @@ c.addEventListener("click",function()
     {
          chancespan.textContent = ` 💬 Too high! Chances Left: ${attempts}`;
     }
+     if(target!==inputmsg && attempts===0)
+      {
+        alert(" ❌ lost the game")
+         inputBox.value = "";
+        reset();
+      }
      guess.textContent= productArray.join(",")
       inputBox.value = "";
 
-      if(target!==inputmsg && attempt==10)
-      {
-        alert("lost the game")
-        inputBox.value = "";
-      }
+     
 });
 

@@ -94,11 +94,11 @@ body{
     height: 35%;
    }
    .body-content h1{
-    font-size: 35px;
+    font-size: 33px;
     font-weight: 600;
    }
   .p1{
-    font-size: 20px;
+    font-size: 19px;
   }
   .body-content input{
     font-size:19px;
@@ -112,4 +112,19 @@ body{
   .msg p{
     font-size: 22px;
   }
+}
+@media (max-width: 600px) {
+  ::-webkit-scrollbar {
+    display: none;
+   }
+  .body-content {
+        width: 88%;
+        height: 36%;
+    }
+  .body-content h1 {
+        font-size: 28px;
+    }
+    .button-get button {
+    width: 33%;
+    }
 }
