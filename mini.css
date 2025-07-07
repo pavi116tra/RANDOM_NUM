@@ -81,7 +81,7 @@ body{
 .msg{
     width:100%;
     height:34%;
-    background-color: bisque;
+    /* background-color: bisque; */
     padding-left: 20px;
     padding-top: 10px;
     display:flex;
