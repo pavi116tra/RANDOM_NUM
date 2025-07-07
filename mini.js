@@ -1,45 +1,72 @@
+
 const c= document.querySelector(".b1")
 const inputBox=document.querySelector(".input-txt")
 const chancespan=document.querySelector(".number_mod")
 const guess=document.querySelector(".msg_mod")
 const audiobutton=document.querySelector(".clickSound")
- let target = Math.floor(Math.random() * 100) + 1;
-  let productArray=[];
-  let attempts = 10;
+
+let target = Math.floor(Math.random() * 100) + 1;
+let productArray=[];
+let attempts = 10;
+let timeleft = 60;
 function reset()
 {
   target = Math.floor(Math.random() * 100) + 1;
    productArray=[];
    attempts = 10;
    chancespan.textContent = attempts;
-  // guess.textContent = "none";
+   guess.textContent = "None";
 }
+
+
 
 c.addEventListener("click",function()
 {
    
-   const inputmsg=Number(inputBox.value)
-   console.log(inputmsg)
-   productArray.push(inputmsg)
-    console.log(  productArray)
+    const inputValue = inputBox.value.trim();
+       if (inputValue === "")
+       {
+           alert("⚠️ Please enter a number");
+          return;
+        
+        }
+    const inputmsg = Number(inputValue);
+
+      if (isNaN(inputmsg)) 
+      {
+          alert("⚠️ Not a valid number");
+          return;
+          
+      }
+     productArray.push(inputmsg);
+     attempts--;
+
    if(inputmsg<0 || inputmsg>100)
    {
-    alert("❌ Please enter a number between 1 and 100")
-    return
+    alert("⚠️ Please enter a number between 1 and 100")
+    return;
+    
    }
-     attempts--;
+    
     if(target==inputmsg)
     {
-         audiobutton.play();
+        audiobutton.play();
         chancespan.textContent= `🎉 You guessed it! Number was ${target}`
         alert(" 🎉 successfully guessed the Number")
         inputBox.value = "";
         reset();
+        return;
 
     }
     else if(attempts==0)
     {
-        chancespan.textContent = ` ❌ No more chances! The number was ${target}`;
+        
+          alert(` ❌ Lost the game! The number was ${target}`);
+           audiobutton.play();
+          inputBox.value = "";
+           reset();
+           
+        
     }
     else if(inputmsg<target)
     {
@@ -49,16 +76,6 @@ c.addEventListener("click",function()
     {
          chancespan.textContent = ` 💬 Too high! Chances Left: ${attempts}`;
     }
-     if(target!==inputmsg && attempts===0)
-      {
-        audiobutton.play();
-        alert(" ❌ lost the game")
-         inputBox.value = "";
-        reset();
-      }
-     guess.textContent= productArray.join(",")
+       guess.textContent = productArray.length > 0 ? productArray.join(", ") : "None";
       inputBox.value = "";
-
-     
-});
-
+  });

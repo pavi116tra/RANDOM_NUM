@@ -21,8 +21,12 @@ body{
    width:28%;
    height:48%;
    background-color:rgba(255, 255, 255, 0.867);
-    border-radius: 4%;
-   
+   border-radius: 4%;
+   backdrop-filter: blur(12px);          /* Frosted blur */
+   -webkit-backdrop-filter: blur(12px); 
+   border-radius: 16px;
+   border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border */
+   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25); 
    /* flex-direction: column; */
 }
 .body-content h1{
@@ -76,14 +80,20 @@ body{
 }
 .msg{
     width:100%;
-    height:33%;
-    /* background-color: bisque; */
+    height:34%;
+    background-color: bisque;
     padding-left: 20px;
     padding-top: 10px;
     display:flex;
     flex-direction: column;
     gap:10px;
 }
+/* .timer{
+  width:100%;
+  height:8%;
+  background-color: cyan;
+  padding-left: 20px;
+} */
 @media (max-width: 1200px) {
   ::-webkit-scrollbar {
     display: none;
